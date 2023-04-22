@@ -1,4 +1,4 @@
-import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { api } from '~/utils/api';
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
               : <SignInButton />}
           </div>
           <div className="flex flex-col">
-            {data?.map(post => (
+            {data?.map(({ post }) => (
               <p key={post.id} className="p-8 border-b border-slate-400"> {post.content} </p>
             ))}
           </div>
