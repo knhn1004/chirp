@@ -1,11 +1,12 @@
-import { type AppType } from "next/app";
+import { ClerkProvider } from '@clerk/nextjs';
+import type { AppProps } from 'next/app'
 
-import { api } from "~/utils/api";
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ClerkProvider {...pageProps} >
+      <Component {...pageProps} />
+    </ClerkProvider>
+  );
+}
 
-import "~/styles/globals.css";
-
-const MyApp: AppType = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
-};
-
-export default api.withTRPC(MyApp);
+export default MyApp;
